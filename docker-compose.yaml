@@ -1,0 +1,57 @@
+# Chatbotto_ruby a chat bot application.
+# Backend: Ruby on Rails # Frontend: Next.js # Database: PostgreSQL # Deployment: Localhost
+
+version: "3.8"
+
+volumes:
+  db-data:
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/db/Dockerfile
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: chatbotto
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-init-scripts:/docker-entrypoint-initdb.d
+      - db-data:/var/lib/postgresql/data
+
+  front:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/front/Dockerfile
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+
+  back:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/back/Dockerfile
+    volumes:
+      - ./back:/app
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=postgresql://postgres:secret@db:5432/chatbotto
+      - RAILS_ENV=development
+      - RAILS_LOG_TO_STDOUT=true
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - front
+      - back

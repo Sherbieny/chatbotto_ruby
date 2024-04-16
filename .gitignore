@@ -1,0 +1,80 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# NEXT.JS
+
+# dependencies
+./front/node_modules
+./front/.pnp
+./front/.pnp.js
+./front/.yarn/install-state.gz
+
+# testing
+./front/coverage
+
+# next.js
+./front/.next/
+./front/out/
+
+# production
+./front/build
+
+# misc
+./front/.DS_Store
+./front/*.pem
+
+# debug
+./front/npm-debug.log*
+./front/yarn-debug.log*
+./front/yarn-error.log*
+
+# local env files
+./front/.env*.local
+
+# vercel
+./front/.vercel
+
+# typescript
+./front/*.tsbuildinfo
+./front/next-env.d.ts
+
+./front/.next/cache
+
+# RUBY ON RAILS
+
+# Ignore bundler config.
+/back/.bundle
+
+# Ignore the default SQLite database.
+/back/db/*.sqlite3
+/back/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/back/log/*
+/back/tmp/*
+!/back/log/.keep
+!/back/tmp/.keep
+
+# Ignore uploaded files in development
+/back/storage/*
+!/back/storage/.keep
+
+# Ignore master key for decrypting credentials and more.
+/back/config/master.key
+
+# Ignore node_modules
+/back/node_modules/
+
+# Ignore precompiled assets
+/back/public/assets
+
+# Ignore yarn error logs
+/back/yarn-error.log
+
+# Ignore the database configuration file if it's not using the DATABASE_URL environment variable
+!/back/config/database.yml
+
+# SQLTools sql files
+*.sql
+
+# REST CLIENT .http files
+*.http
