@@ -1,7 +1,7 @@
 class Qa < ApplicationRecord
     def self.search(query)
         columns = ['prompt']
-        suggestions_count = Setting.find_by(key: 'suggestions_count')&.value.to_i || 5
+        suggestions_count = Setting.find_by(key: 'suggestionsCount')&.value.to_i || 5
 
         search_query = self
         columns.each do |column|

@@ -1,4 +1,6 @@
 class Api::ChatbotController < ApplicationController
+    skip_before_action :verify_authenticity_token
+    
     def get_suggestions
         query = params[:query]
         suggestions = Qa.search(query)

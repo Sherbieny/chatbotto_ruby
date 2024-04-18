@@ -10,10 +10,10 @@ Rails.application.routes.draw do
 
     namespace :api do
         get 'suggestions', to: 'chatbot#get_suggestions'
-        post 'message', to: 'chatbot#process_message'
+        post 'message', to: 'chatbot#send_message'
         get 'settings', to: 'settings#show'
         post 'settings', to: 'settings#update'
         post 'upload', to: 'data_uploads#upload'
-        post 'process', to: 'data_uploads#process'
+        post 'process', to: 'data_uploads#process_data'
     end
 end
