@@ -20,4 +20,4 @@ RUN bundle install
 EXPOSE 3001
 
 # Start the application
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3001"]
